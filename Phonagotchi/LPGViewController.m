@@ -14,6 +14,7 @@
 @property (nonatomic) UIImageView *petImageView;
 @property (nonatomic) Pet *petObject;
 @property (nonatomic) UIImageView *appleView;
+@property (nonatomic) UIImageView *bucketView;
 
 @end
 
@@ -65,22 +66,23 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeLeadingMargin
                                                          multiplier:1.0
-                                                           constant:10.0]];
+                                                           constant:20.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
-                                                          attribute:NSLayoutAttributeTopMargin
+                                                          attribute:NSLayoutAttributeBottomMargin
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
-                                                          attribute:NSLayoutAttributeTopMargin
+                                                          attribute:NSLayoutAttributeBottomMargin
                                                          multiplier:1.0
-                                                           constant:20.0]];
+                                                           constant:-60.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
                                                           attribute:NSLayoutAttributeWidth
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
-                                                         multiplier:1.0 constant:50.0f]];
+                                                         multiplier:1.0
+                                                           constant:50.0f]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
                                                           attribute:NSLayoutAttributeHeight
@@ -89,6 +91,45 @@
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
                                                            constant:50.0f]];
+    
+    self.bucketView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.bucketView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.bucketView.image = [UIImage imageNamed:@"bucket"];
+    
+    [self.view insertSubview:self.bucketView aboveSubview:self.petImageView];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
+                                                          attribute:NSLayoutAttributeBottomMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeBottomMargin
+                                                         multiplier:1.0
+                                                           constant:-30.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:120.0f]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:120.0f]];
 }
 
 - (IBAction)pettingPan:(UIPanGestureRecognizer*)sender {
