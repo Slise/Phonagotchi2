@@ -20,7 +20,7 @@
 }
 
 -(void)petMood:(double)velocity {
-    if (velocity > 7000) {
+    if (velocity > 6000) {
         self.grumpy = YES;
     }
 }

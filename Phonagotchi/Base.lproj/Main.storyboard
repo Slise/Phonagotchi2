@@ -20,6 +20,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QFV-Ex-VK1" appends="YES" id="0Gr-2f-WMY"/>
+                            <outletCollection property="gestureRecognizers" destination="UcP-nR-QJF" appends="YES" id="kWp-be-gUx"/>
                         </connections>
                     </view>
                 </viewController>
@@ -29,6 +30,11 @@
                         <action selector="pettingPan:" destination="vXZ-lx-hvc" id="yNX-eC-2WM"/>
                     </connections>
                 </panGestureRecognizer>
+                <pinchGestureRecognizer id="UcP-nR-QJF">
+                    <connections>
+                        <action selector="pinchObject:" destination="vXZ-lx-hvc" id="aQ1-cw-nU0"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
         </scene>
     </scenes>

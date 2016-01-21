@@ -31,9 +31,7 @@
     
     self.petImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.petImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     self.petImageView.image = [UIImage imageNamed:@"default"];
-    
     [self.view addSubview:self.petImageView];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.petImageView
@@ -55,9 +53,7 @@
     
     self.appleView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.appleView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     self.appleView.image = [UIImage imageNamed:@"apple"];
-
     [self.view insertSubview:self.appleView aboveSubview:self.petImageView];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
@@ -74,7 +70,7 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeBottomMargin
                                                          multiplier:1.0
-                                                           constant:-60.0]];
+                                                           constant:-65.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
                                                           attribute:NSLayoutAttributeWidth
@@ -94,9 +90,7 @@
     
     self.bucketView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.bucketView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     self.bucketView.image = [UIImage imageNamed:@"bucket"];
-    
     [self.view insertSubview:self.bucketView aboveSubview:self.petImageView];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
@@ -139,7 +133,14 @@
     [self.petObject petMood:velocity];
     if  (self.petObject.grumpy){
         self.petImageView.image = [UIImage imageNamed:@"grumpy"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.petImageView.image = [UIImage imageNamed:@"default"];
+        });
     }
+}
+
+- (IBAction)pinchObject:(id)sender {
+    
 }
 
 @end
