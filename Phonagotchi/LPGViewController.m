@@ -62,7 +62,7 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeLeadingMargin
                                                          multiplier:1.0
-                                                           constant:20.0]];
+                                                           constant:40.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
                                                           attribute:NSLayoutAttributeBottomMargin
@@ -70,7 +70,7 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeBottomMargin
                                                          multiplier:1.0
-                                                           constant:-65.0]];
+                                                           constant:-95.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
                                                           attribute:NSLayoutAttributeWidth
@@ -78,7 +78,7 @@
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
-                                                           constant:50.0f]];
+                                                           constant:80.0f]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.appleView
                                                           attribute:NSLayoutAttributeHeight
@@ -86,7 +86,7 @@
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
-                                                           constant:50.0f]];
+                                                           constant:80.0f]];
     
     self.bucketView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.bucketView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -99,7 +99,7 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeLeadingMargin
                                                          multiplier:1.0
-                                                           constant:0.0]];
+                                                           constant:5.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
                                                           attribute:NSLayoutAttributeBottomMargin
@@ -107,7 +107,7 @@
                                                              toItem:self.view
                                                           attribute:NSLayoutAttributeBottomMargin
                                                          multiplier:1.0
-                                                           constant:-30.0]];
+                                                           constant:-20.0]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
                                                           attribute:NSLayoutAttributeWidth
@@ -115,7 +115,7 @@
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
-                                                           constant:120.0f]];
+                                                           constant:220.0f]];
     
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bucketView
                                                           attribute:NSLayoutAttributeHeight
@@ -123,7 +123,7 @@
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
-                                                           constant:120.0f]];
+                                                           constant:220.0f]];
 }
 
 - (IBAction)pettingPan:(UIPanGestureRecognizer*)sender {
@@ -131,15 +131,18 @@
     double velocity = sqrt((vector.x * vector.x) + (vector.y * vector.y));
     NSLog(@"%f", velocity);
     [self.petObject petMood:velocity];
-    if  (self.petObject.grumpy){
+    if  (self.petObject.grumpy) {
         self.petImageView.image = [UIImage imageNamed:@"grumpy"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.petObject.grumpy = NO;
+        //set cat back to default state after 5 sec
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.petImageView.image = [UIImage imageNamed:@"default"];
         });
     }
 }
 
-- (IBAction)pinchObject:(id)sender {
+- (IBAction)pinchObject:(UIPinchGestureRecognizer *)sender {
+    
     
 }
 
